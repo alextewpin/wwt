@@ -2,7 +2,7 @@
 /node_modules
 
 # tests
-__tests__/out
+*/__tests__/out
 
 # misc
 .DS_Store
