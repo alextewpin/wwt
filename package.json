@@ -1,0 +1,25 @@
+{
+  "name": "wwt",
+  "version": "0.1.0",
+  "author": "Alex Tewpin",
+  "description": "Westwing Tools",
+  "license": "UNLICENSED",
+  "scripts": {
+    "format": "prettier --write '**/*.*'"
+  },
+  "bin": {
+    "wwt": "./bin/index.js"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "ramda": "^0.26.1",
+    "yargs": "^12.0.5"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^3.3.0",
+    "eslint-plugin-import": "^2.14.0",
+    "prettier": "^1.15.3"
+  }
+}
