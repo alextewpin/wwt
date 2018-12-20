@@ -40,13 +40,14 @@ const findCampaignItems = async args => {
 
   const dirnames = srcItems.filter((_, i) => isDirectoryStats[i]);
 
-  const isListExists = await fs.pathExists(src);
+  const isListExists = await fs.pathExists(list);
   if (!isListExists) {
     throw new Error(`File ${list} not exists`);
   }
 
   const listContent = ((await fs.readFile(list, 'utf8')) || '')
     .split('\n')
+    .map(R.trim)
     .filter(R.identity)
     .map(R.toLower);
   if (!listContent.length) {
@@ -84,14 +85,14 @@ const findCampaignItems = async args => {
 
   if (dirnames.length) {
     const unexpectedDirs = dirnames.map(R.prop('fullName')).join(', ');
-    messages.push(`[?] Unexpected directories: ${unexpectedDirs}`);
+    messages.push(`[warn] Unexpected directories: ${unexpectedDirs}`);
   }
   if (unmatchedListItems.length) {
     messages.push(
-      `[?] List items without matches: ${unmatchedListItems.join(', ')}`,
+      `[warn] List items without matches: ${unmatchedListItems.join(', ')}`,
     );
   }
-  messages.push(`[V] Copied ${filesToCopy.length} files`);
+  messages.push(`[ok] Copied ${filesToCopy.length} files`);
 
   // eslint-disable-next-line no-console
   console.log(messages.join('\n'));

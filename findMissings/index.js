@@ -53,7 +53,7 @@ const findMissing = async ({ max, src }) => {
 
   if (positionsWithoutFirstPhoto.length) {
     const missings = positionsWithoutFirstPhoto.join(', ');
-    errors.push(`[X] Missing first photos for items: ${missings}`);
+    errors.push(`[err] Missing first photos for items: ${missings}`);
   }
 
   const positions = items.map(R.prop('position'));
@@ -71,7 +71,7 @@ const findMissing = async ({ max, src }) => {
   if (missingPositions.length) {
     const missings = missingPositions.join(', ');
     errors.push(
-      `[X] In range from ${minPosition} to ${maxPosition} there are missing positions: ${missings}}`,
+      `[err] In range from ${minPosition} to ${maxPosition} there are missing positions: ${missings}}`,
     );
   }
 
@@ -80,7 +80,7 @@ const findMissing = async ({ max, src }) => {
   } else {
     // eslint-disable-next-line no-console
     console.log(
-      `[V] There is no missing positions in range from ${minPosition} to ${maxPosition}`,
+      `[ok] There is no missing positions in range from ${minPosition} to ${maxPosition}`,
     );
   }
 };
